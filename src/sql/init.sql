@@ -13,3 +13,36 @@ create table users (
   `updatetime` timestamp
 );
 
+create table products(
+  `id` varchar (100) primary key ,
+  `name` varchar (40),
+  `price` double,
+  `category` varchar(40),
+  `pnum` int ,
+	`imgurl` varchar(100),
+	`description` varchar(255)
+);
+
+--订单表
+create table orders(
+   id varchar(100) primary key,
+   money double,
+   receiverinfo varchar(255),
+   paystate int,
+   ordertime timestamp,
+   user_id int ,
+   foreign key(user_id) references users(id)
+);
+
+--订单项
+create table orderitem(
+   order_id varchar(100),
+   product_id varchar(100),
+   buynum int ,
+   primary key(order_id,product_id),
+   foreign key(order_id) references orders(id),
+   foreign key(product_id) references products(id)
+);
+
+
+
