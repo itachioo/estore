@@ -44,5 +44,9 @@ create table orderitem(
    foreign key(product_id) references products(id)
 );
 
-
+create table `category`(
+  `code` int(11) default null ,
+  `name` varchar(40) default null ,
+  `fathercode` int(11) default null,
+);
 
